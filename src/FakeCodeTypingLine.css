@@ -1,0 +1,37 @@
+.fake-code-typing-line a {
+  text-decoration: none;
+}
+
+.fake-code-typing-line {
+  display:inline-block;
+}
+
+.fake-code-typing-line div {
+  display:inline-block;
+  color: white;
+  overflow:hidden;
+  white-space: nowrap;
+  border-right: 1px solid white;
+  width: 0;
+  opacity: 0;
+}
+
+@-webkit-keyframes typing {
+  from { width: 0; }
+  to { width:100%; }
+}
+
+@-moz-keyframes typing {
+  from { width: 0; }
+  to { width:100%; }
+}
+
+@-webkit-keyframes blink {
+  from, to { border-color: transparent }
+  50% { border-color: white }
+}
+
+@-moz-keyframes blink {
+  from, to { border-color: transparent }
+  50% { border-color: white }
+}
