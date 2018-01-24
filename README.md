@@ -59,7 +59,7 @@ Typing speed (default: 12).
 
 ## Showcase
 
-* Coming soon
+* [The 404 page of my resume (Stéphane Monnot)](https://stephanemonnot.com/404.html).
 
 
 ## For development
