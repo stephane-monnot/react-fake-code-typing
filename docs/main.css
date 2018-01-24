@@ -1,3 +1,20 @@
 .github-corner svg {
     z-index: 1000;
 }
+
+.fake-code-typing {
+
+}
+
+.fake-code-typing-dark {
+    font-family: monospace;
+    font-size: 11px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 400;
+    line-height: 11px;
+    letter-spacing: 1.5px;
+    padding: 5px;
+    background: rgb(22, 22, 22);
+    color: #fff;
+}

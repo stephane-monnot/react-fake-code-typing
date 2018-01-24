@@ -13,23 +13,51 @@ import './main.css';
 import '../style.css';
 
 const testCode = `
-function setError($errorcode) {
-      $this->errorcode = $errorcode;
-      $this->error = $this->errors[$errorcode];
-}
+/**
+ * @link Home
+ * @todo ..write a 404 page that actually makes sense.
+ */
+class HttpException extends \\RuntimeException implements HttpExceptionInterface
+{
+  public function __construct(int $statusCode, string $message = null, \\Exception $previous = null, array $headers = array(), ?int $code = 0)
+  {
+      $this->statusCode = $statusCode;
+      $this->headers = $headers;
+      parent::__construct($message, $code, $previous);
+  }
 
-function getError($errormessage = '') {
-      $error = $this->errorcode.$this->errormessage;
-      return $error;
-      exit;
+  public function getStatusCode()
+  {
+      return $this->statusCode;
+  }
+
+  public function getHeaders()
+  {
+      return $this->headers;
+  }
+
+  /**
+   * Set response headers.
+   * 
+   *
+   * @param array $headers Response headers
+   */
+  public function setHeaders(array $headers)
+  {
+      $this->headers = $headers;
+      $fruits = array (
+          "fruits"  => array("a" => "orange", "b" => "banana", "c" => "apple"),
+          "numbers" => array(1, 2, 3, 4, 5, 6),
+          "holes"   => array("first", 5 => "second", "third")
+      );
+  }
 }
 
 /**
  * @link Home
  * @todo ..write a 404 page that actually makes sense.
  */
-$err->setError(404);
-$err->getError("Page Not Found");`;
+throw new HttpException(400, 'Page Not Found');`;
 
 // Add your documentation imports here. These are available to
 // React specimen. Do NOT pass React here as Catalog does that.
@@ -45,15 +73,16 @@ const pages = [
     title: 'Demo',
     content: () => (
       <div>
-        <FakeCodeTyping>
-          <pre>
-            {testCode}
-          </pre>
+        <h2>Simple demo</h2>
+        <FakeCodeTyping className="fake-code-typing-dark">
+          <pre><code>{testCode}</code></pre>
         </FakeCodeTyping>
 
+        <h2>Demo with SyntaxHighlighter</h2>
         <FakeCodeTyping>
-          <SyntaxHighlighter language="php" wrapLines style={monokai}>{testCode}</SyntaxHighlighter>
+          <SyntaxHighlighter language="php" style={monokai}>{testCode}</SyntaxHighlighter>
         </FakeCodeTyping>
+        <SyntaxHighlighter language="php" style={monokai}>{testCode}</SyntaxHighlighter>
       </div>
     )
   }

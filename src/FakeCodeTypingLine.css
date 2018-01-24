@@ -8,7 +8,6 @@
 
 .fake-code-typing-line div {
   display:inline-block;
-  color: white;
   overflow:hidden;
   border-right: 1px solid white;
   width: 0;
