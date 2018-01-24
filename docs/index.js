@@ -4,11 +4,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import GithubCorner from 'react-github-corner';
 import { Catalog, CodeSpecimen, ReactSpecimen, pageLoader } from 'catalog';
-import SyntaxHighlighter from 'react-syntax-highlighter';
 import { monokai } from 'react-syntax-highlighter/styles/hljs';
 import 'purecss/build/pure.css';
 
-import { FakeCodeTyping } from '../src/index';
 import './main.css';
 import '../style.css';
 
@@ -19,37 +17,20 @@ const testCode = `
  */
 class HttpException extends \\RuntimeException implements HttpExceptionInterface
 {
-  public function __construct(int $statusCode, string $message = null, \\Exception $previous = null, array $headers = array(), ?int $code = 0)
+  public function __construct(int $statusCode, string $message = null, \\Exception $previous = null)
   {
       $this->statusCode = $statusCode;
-      $this->headers = $headers;
       parent::__construct($message, $code, $previous);
   }
 
+  /**
+   * Get Status code.
+   *
+   * @return int Status code
+   */
   public function getStatusCode()
   {
       return $this->statusCode;
-  }
-
-  public function getHeaders()
-  {
-      return $this->headers;
-  }
-
-  /**
-   * Set response headers.
-   * 
-   *
-   * @param array $headers Response headers
-   */
-  public function setHeaders(array $headers)
-  {
-      $this->headers = $headers;
-      $fruits = array (
-          "fruits"  => array("a" => "orange", "b" => "banana", "c" => "apple"),
-          "numbers" => array(1, 2, 3, 4, 5, 6),
-          "holes"   => array("first", 5 => "second", "third")
-      );
   }
 }
 
@@ -71,20 +52,13 @@ const pages = [
   {
     path: '/demo',
     title: 'Demo',
-    content: () => (
-      <div>
-        <h2>Simple demo</h2>
-        <FakeCodeTyping className="fake-code-typing-dark">
-          <pre><code>{testCode}</code></pre>
-        </FakeCodeTyping>
-
-        <h2>Demo with SyntaxHighlighter</h2>
-        <FakeCodeTyping>
-          <SyntaxHighlighter language="php" style={monokai}>{testCode}</SyntaxHighlighter>
-        </FakeCodeTyping>
-        <SyntaxHighlighter language="php" style={monokai}>{testCode}</SyntaxHighlighter>
-      </div>
-    )
+    imports: {
+      testCode,
+      monokai,
+      FakeCodeTyping: require('FakeCodeTyping'),
+      SyntaxHighlighter: require('react-syntax-highlighter')
+    },
+    content: pageLoader(() => import('./DEMO.md'))
   }
 ];
 
