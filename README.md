@@ -1,6 +1,7 @@
 [![build status](https://secure.travis-ci.org/stephane-monnot/react-fake-code-typing.svg)](http://travis-ci.org/stephane-monnot/react-fake-code-typing) [![bitHound Score](https://www.bithound.io/github/stephane-monnot/react-fake-code-typing/badges/score.svg)](https://www.bithound.io/github/stephane-monnot/react-fake-code-typing) [![Dependency Status](https://david-dm.org/stephane-monnot/react-fake-code-typing.svg)](https://david-dm.org/stephane-monnot/react-fake-code-typing)
 
 # react-fake-code-typing - Fake code typing for React.js
+![alt tag](https://imgur.com/fUP6MXR.gif)
 
 ## Full documentation & Demo
 
