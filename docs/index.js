@@ -46,9 +46,9 @@ const pages = [
     content: () => (
       <div>
         <FakeCodeTyping>
-        <pre>
-          {testCode}
-        </pre>
+          <pre>
+            {testCode}
+          </pre>
         </FakeCodeTyping>
 
         <FakeCodeTyping>
