@@ -3,13 +3,28 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import FakeCodeTypingLine from './FakeCodeTypingLine';
+import { renderToString } from "react-dom/server";
 
 class FakeCodeTyping extends Component {
+  /**
+   * Returns the text from a HTML string
+   *
+   * @param {html} String The html string
+   */
+  stripHtml(html){
+    // Create a new div element
+    var temporalDivElement = document.createElement("div");
+    // Set the HTML content with the providen
+    temporalDivElement.innerHTML = html;
+    // Retrieve the text property of the element (cross-browser support)
+    return temporalDivElement.textContent || temporalDivElement.innerText || "";
+  }
+
   render() {
     const { children, speed } = this.props;
     let { className } = this.props;
 
-    const lines = children.props.children.split('\n');
+    const lines = renderToString(children).split('\n');
 
     className += ' fake-code-typing';
     let delay = 0;
@@ -20,7 +35,7 @@ class FakeCodeTyping extends Component {
       <div className={className.trim()}>
         <pre>
           {lines.map((line, i) => {
-            const count = line.length;
+            const count = this.stripHtml(line).length;
             delay += duration;
             duration = count / speed;
 
@@ -31,9 +46,7 @@ class FakeCodeTyping extends Component {
                   count={count}
                   duration={duration}
                   delay={delay}
-                >
-                  {line}
-                </FakeCodeTypingLine>
+                >{line}</FakeCodeTypingLine>
                 {'\n'}
               </div>
 

@@ -40,7 +40,7 @@ class FakeCodeTypingLine extends Component {
     };
     return (
       <div className="fake-code-typing-line">
-        <div style={animations} dangerouslySetInnerHTML={{ __html: children.replace(' ', '&emsp;') }} />
+        <div style={animations} dangerouslySetInnerHTML={{ __html: children }} />
       </div>
     );
   }

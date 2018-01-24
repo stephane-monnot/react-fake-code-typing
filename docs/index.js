@@ -4,6 +4,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import GithubCorner from 'react-github-corner';
 import { Catalog, CodeSpecimen, ReactSpecimen, pageLoader } from 'catalog';
+import SyntaxHighlighter from 'react-syntax-highlighter';
+import { monokai } from 'react-syntax-highlighter/styles/hljs';
 import 'purecss/build/pure.css';
 
 import { FakeCodeTyping } from '../src/index';
@@ -14,8 +16,8 @@ const testCode = `
 function setError($errorcode) {
       $this->errorcode = $errorcode;
       $this->error = $this->errors[$errorcode];
-      }
 }
+
 function getError($errormessage = '') {
       $error = $this->errorcode.$this->errormessage;
       return $error;
@@ -42,11 +44,17 @@ const pages = [
     path: '/demo',
     title: 'Demo',
     content: () => (
-      <FakeCodeTyping>
+      <div>
+        <FakeCodeTyping>
         <pre>
           {testCode}
         </pre>
-      </FakeCodeTyping>
+        </FakeCodeTyping>
+
+        <FakeCodeTyping>
+          <SyntaxHighlighter language="php" wrapLines style={monokai}>{testCode}</SyntaxHighlighter>
+        </FakeCodeTyping>
+      </div>
     )
   }
 ];
